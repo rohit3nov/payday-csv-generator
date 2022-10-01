@@ -1,0 +1,10 @@
+{
+  "description": "Paycheck csv generator",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "Lib\\": "lib/",
+      "Commands\\": "commands/"
+    }
+  }
+}
