@@ -17,7 +17,7 @@ class App
         $this->registry[$name] = $callable;
     }
 
-    public function getCommand(string $command): callable|array
+    public function getCommand(string $command): callable|array|null
     {
         return isset($this->registry[$command]) ? $this->registry[$command] : null;
     }

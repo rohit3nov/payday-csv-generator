@@ -9,14 +9,15 @@ require __DIR__ . '/vendor/autoload.php';
 $helper = new Lib\Helper;
 $app = new Lib\App($helper);
 
-$app->registerCommand('get-salary-dates', [
-    new Commands\GetSalaryDates( $argv , new \Lib\CSV('paycheck_dates.csv','w') ),
-    'run'
-]);
+$app->registerCommand('get-salary-dates', function($argv) {
+    $res = new Commands\GetSalaryDates($argv , new \Lib\CSV('paycheck_dates.csv', 'w'));
+    $res();
+});
 
-$app->registerCommand('help', [
-    new Commands\Help($argv, $helper),
-    'run'
-]);
+
+$app->registerCommand('help', function($argv) use ($helper){
+    $res = new Commands\Help($argv, $helper);
+    $res();
+});
 
 $app->runCommand($argv);

@@ -19,14 +19,12 @@ A company is handling their sales payroll in the following way: - Sales staff ge
     `$ docker exec -it csv-generator composer dump-autolod`
 
 # Generate CSV
-- Run below command to get the csv generated inside `docs` folder. Make sure you replace the `[year]` field in below command with actual year or if you don't pass it, it will give result for remaining months of current year
+- Run below command to get the csv generated inside folder. Make sure you replace the `[year]` field in below command with actual year or if you don't pass it, it will give result for remaining months of current year
 
-    `$ docker exec -it csv-generator php index get-salary-dates [year] > 'docs/dates.csv'`
+    `$ docker exec -it csv-generator php index get-salary-dates [year]`
     
-- If you don't need docker setup, you can simply run `composer dump-autoload` for setup and `php index get-salary-dates <year> > docs/dates.csv` for generating the csv
+- If you don't need docker setup, you can simply run `composer dump-autoload` for setup and `php index get-salary-dates [year]` for generating the csv. Make sure you have `composer` and `php` installed before running these commands
 
-## Run test cases
+- Use below command on windows to open the generated csv
 
-- Enter container using `$ docker exec -it php-fpm /bin/bash` then
-
-    `$ composer run test`
+    `.\paycheck_dates.csv`

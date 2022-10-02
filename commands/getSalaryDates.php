@@ -12,14 +12,18 @@ class GetSalaryDates
         $this->args = $args;
         $this->csv = $csv;
     }
-    public function run()
+    public function __invoke()
     {
         $year = date('Y');
         $month = date('m');
 
         if (isset($this->args[2])) {
-            $year = $this->args[2];
+            $year = (int)$this->args[2];
             $month = 1;
+        }
+        if ($year == 0 || $year < 1990 || $year > 2030) {
+            echo "ERROR: Invalid argument '" . $this->args[2] . "' for command '" . $this->args[1] . "'.\n";
+            exit;
         }
 
         $dateTime = new \DateTime();

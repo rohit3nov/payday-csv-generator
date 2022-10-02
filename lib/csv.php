@@ -7,22 +7,20 @@ class CSV
     private $file;
     private $handle;
 
-    public function __construct($file, string $mode = 'r')
+    public function __construct(string $file, string $mode = 'r')
     {
         if (!is_string($file)) {
             throw new \InvalidArgumentException('Parameter $file must be a string. Provided type: ' . gettype($file));
         }
-
-        $this->file = $file;
-
-        if (is_file($file) && is_readable($file)) {
-            $this->handle = fopen($file, $mode);
-        } elseif ($mode == 'w') {
+        if ($mode == 'w') {
             $this->setOutputHeaders();
-            $this->handle = fopen('php://output', $mode);
+        }
+        if (is_file($file) && is_readable($file) || $mode == 'w') {
+            $this->handle = fopen($file, $mode);
         } else {
             throw new \RuntimeException('The provided file could not be opened for reading. File: ' . $file);
         }
+        $this->file = $file;
     }
 
     public function get($mode)
@@ -76,7 +74,7 @@ class CSV
 
     public function setOutputHeaders()
     {
-        header('Content-type: application/csv');
+        header('Content-Type: application/csv;charset=UTF-8;');
         header('Content-Disposition: attachment; filename=' . $this->file);
     }
 

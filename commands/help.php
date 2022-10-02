@@ -13,7 +13,7 @@ class Help
         $this->helper = $helper;
     }
 
-    public function run()
+    public function __invoke()
     {
         $this->helper->out("\nCommand List:\n");
         $this->helper->out("-------------\n");
