@@ -10,7 +10,7 @@ $helper = new Lib\Helper;
 $app = new Lib\App($helper);
 
 $app->registerCommand('get-salary-dates', [
-    new Commands\Get_Salary_Dates( $argv , new \Lib\CSV('paycheck_dates.csv','w') ),
+    new Commands\GetSalaryDates( $argv , new \Lib\CSV('paycheck_dates.csv','w') ),
     'run'
 ]);
 

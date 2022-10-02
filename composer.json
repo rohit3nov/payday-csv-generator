@@ -6,5 +6,8 @@
       "Lib\\": "lib/",
       "Commands\\": "commands/"
     }
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "3.*"
   }
 }
