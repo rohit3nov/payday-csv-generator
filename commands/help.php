@@ -15,7 +15,6 @@ class Help
 
     public function run()
     {
-
         $this->helper->out("\nCommand List:\n");
         $this->helper->out("-------------\n");
         $this->helper->display("1) get-salary-dates [ year ]");
